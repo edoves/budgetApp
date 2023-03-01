@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;400;600&display=swap');
+body {
+  background: linear-gradient(rgba(9, 10, 31, 0.73), rgba(9, 10, 31, 0.73)), url(/bg.png) no-repeat;
+  background-size: cover;
+  font-family: 'Outfit', sans-serif;
+  font-weight: normal;
+}
+header {
+  margin: 30px 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.cont {
+  min-height: 100vh;
+}
+.content {
+  padding: 20px;
+}
+.main-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 20px;
+}
+.budget p {
+  margin-bottom: 0;
+  font-weight: bold;
+}
+.budget p span {
+  font-weight: normal;
+}
+#expenses {
+  margin-bottom: 30px;
+}
