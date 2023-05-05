@@ -19,9 +19,9 @@
             <div class="col-lg-6">
               <div class="content primary">
                 <p>Enter your budget for this month</p>
-                <form id="budget-form" class="budget-form mb-3">
+                <form id="budget" class="budget-form mb-3">
                   <div class="form-group">
-                    <input type="number" class="form-control budget-input" id="budget-input" />
+                    <input type="text" class="form-control budget-input" id="budget-input" />
                   </div>
                   <button type="submit" class="btn btn-primary" id="budget-submit">Calculate</button>
                 </form>
@@ -29,14 +29,14 @@
 
                 <div class="expenses">
                   <p>Add your Expenses here...</p>
-                  <form id="add-expenses">
+                  <form id="addExpenses">
                     <div class="form-group">
                       <label for="expense">Name:</label>
                       <input type="text" class="form-control" id="expense" placeholder="Eg. Transportation" />
                     </div>
                     <div class="form-group">
                       <label for="amount">Amount:</label>
-                      <input type="number" class="form-control" id="amount" placeholder="Eg. 20" />
+                      <input type="text" class="form-control" id="amount" placeholder="Eg. 20" />
                     </div>
   
                     <button type="submit" class="btn btn-primary">Add</button>
@@ -50,10 +50,10 @@
               <div class="content secondary">
                 <div class="budget mb4">
                   <div class="alert alert-primary">
-                    <p>Budget: $ <span id="total">1000</span></p>
+                    <p>Budget: $ <span id="total">0</span></p>
                   </div>
-                  <div class="restante alert alert-success">
-                    <p>Budget Left: $ <span id="left"></span></p>
+                  <div class="alert alert-success">
+                    <p>Budget Left: $ <span id="left">0</span></p>
                   </div>
                 </div>
                 <div class="expense-list">
@@ -83,6 +83,7 @@
         </section>
       </div>
     </div>
-    <script src="app.js"></script>
+    <!-- <script src="app.js"></script> -->
+    <script src="script.js"></script>
   </body>
 </html>
