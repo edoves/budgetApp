@@ -21,9 +21,21 @@ function getBudget(e) {
   e.preventDefault()
 
   const elBudgetVal = this.querySelector('.budget-input')
-  budget = Number(elBudgetVal.value)
-  budgetLeft = budget
-  renderBudget()
+
+  if (isNaN(elBudgetVal.value)) {
+    errMessage('Please insert a valid input', 'alert-danger')
+  } else if (elBudgetVal.value.length > 0) {
+    budget = Number(elBudgetVal.value)
+    budgetLeft = budget
+
+    // errMessage('Monthly budget added', 'alert-success')
+
+    elBudget.parentElement.firstElementChild.remove()
+    elBudget.remove()
+
+    renderBudget()
+  }
+
   this.reset()
 }
 
@@ -53,4 +65,17 @@ function getExpenses(e) {
 function renderBudget() {
   elTotal.textContent = budget
   elLeft.textContent = budgetLeft
+}
+
+function errMessage(msg, cls) {
+  const pEl = document.createElement('p')
+  const parentDiv = elBudget
+  const parentDivChild = parentDiv.firstElementChild
+  pEl.textContent = msg
+  pEl.classList = `alert ${cls}`
+
+  parentDiv.insertBefore(pEl, parentDivChild)
+  setTimeout(() => {
+    pEl.remove()
+  }, 1500)
 }
