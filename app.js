@@ -24,21 +24,22 @@ function getBudget(e) {
 
   const elBudgetVal = this.querySelector('.budget-input')
 
+  if (elBudgetVal.value.length > 0) {
+    budget = +elBudgetVal.value
+    budgetLeft = budget
+  } else {
+    errMessage('Please provide your budget', 'alert-danger')
+  }
+
   if (isNaN(elBudgetVal.value)) {
     errMessage('Please insert a valid input', 'alert-danger')
-  } else if (elBudgetVal.value.length > 0) {
-    budget = Number(elBudgetVal.value)
-    budgetLeft = budget
+  }
 
-    if (budget) {
-      errMessage('Monthly budget added', 'alert-success')
-    }
-
+  if (budget) {
+    errMessage('Monthly budget added', 'alert-success')
     elBudget.parentElement.firstElementChild.remove()
     elBudget.remove()
     renderBudget()
-  } else {
-    errMessage('Please provide your budget', 'alert-danger')
   }
 
   this.reset()
@@ -48,12 +49,10 @@ function getExpenses(e) {
   hasBudget = true
   e.preventDefault()
 
-  const crtElItem = document.createElement('li')
-  const crtElItemValues = document.createElement('li')
-
   const expenseItem = this.querySelector('.expenseItem')
   let amount = this.querySelector('.amount')
-  budgetLeft = budgetLeft - amount.value
+
+  budgetLeft = budgetLeft - +amount.value
 
   if (budget === undefined) {
     errMessage('Please input your budget first', 'alert-danger')
@@ -61,10 +60,11 @@ function getExpenses(e) {
     if (budgetLeft < 0) {
       budgetLeft = 0
       errMessage('Your out of budget', 'alert-danger')
-
-      console.log(budgetLeft)
     } else {
       if (expenseItem.value.length > 0 && !isNaN(amount.value) && amount.value.length > 0) {
+        const crtElItem = document.createElement('li')
+        const crtElItemValues = document.createElement('li')
+
         crtElItem.textContent = expenseItem.value
         crtElItemValues.textContent = amount.value
 
