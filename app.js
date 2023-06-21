@@ -37,8 +37,10 @@ function getBudget(e) {
 
   if (budget) {
     errMessage('Monthly budget added', 'alert-success')
-    elBudget.parentElement.firstElementChild.remove()
-    elBudget.remove()
+    setTimeout(() => {
+      elBudget.parentElement.firstElementChild.remove()
+      elBudget.remove()
+    }, 1000)
     renderBudget()
   }
 
