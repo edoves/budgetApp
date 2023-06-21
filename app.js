@@ -54,8 +54,6 @@ function getExpenses(e) {
 
   budgetLeft = isNaN(amount.value) ? budgetLeft : expenseItem.value.length === 0 ? budgetLeft : budgetLeft - +amount.value
 
-  console.log(budgetLeft)
-
   if (budget === undefined) {
     errMessage('Please input your budget first', 'alert-danger')
   } else {
