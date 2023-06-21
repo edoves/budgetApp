@@ -52,7 +52,9 @@ function getExpenses(e) {
   const expenseItem = this.querySelector('.expenseItem')
   let amount = this.querySelector('.amount')
 
-  budgetLeft = budgetLeft - +amount.value
+  budgetLeft = isNaN(amount.value) ? budgetLeft : expenseItem.value.length === 0 ? budgetLeft : budgetLeft - +amount.value
+
+  console.log(budgetLeft)
 
   if (budget === undefined) {
     errMessage('Please input your budget first', 'alert-danger')
@@ -75,23 +77,21 @@ function getExpenses(e) {
         elItemValues.appendChild(fragmentItemValues)
 
         errMessage(`${expenseItem.value} added`, 'alert-success')
-        // console.log('both have input')
 
         renderBudget()
+      } else if (expenseItem.value.length === 0 && amount.value.length === 0) {
+        errMessage('Please provide item name and an amount', 'alert-danger')
       } else if (expenseItem.value.length === 0) {
-        console.log('Please provide item name')
         errMessage('Please provide item name', 'alert-danger')
       } else if (amount.value.length === 0) {
-        console.log('Please provide item amount')
         errMessage('Please provide item amount', 'alert-danger')
       } else if (isNaN(amount.value)) {
-        errMessage('Please provide valid item amount', 'alert-danger')
-        console.log('Please provide valid item amount')
+        errMessage('Please provide a valid item amount', 'alert-danger')
       }
     }
   }
-  hasBudget = false
 
+  hasBudget = false
   this.reset()
 }
 
