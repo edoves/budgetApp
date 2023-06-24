@@ -58,36 +58,34 @@ function getExpenses(e) {
 
   if (budget === undefined) {
     errMessage('Please input your budget first', 'alert-danger')
+  } else if (budgetLeft < 0) {
+    budgetLeft = 0
+    errMessage('Your out of budget', 'alert-danger')
   } else {
-    if (budgetLeft < 0) {
-      budgetLeft = 0
-      errMessage('Your out of budget', 'alert-danger')
-    } else {
-      if (expenseItem.value.length > 0 && !isNaN(amount.value) && amount.value.length > 0) {
-        const crtElItem = document.createElement('li')
-        const crtElItemValues = document.createElement('li')
+    if (expenseItem.value.length > 0 && !isNaN(amount.value) && amount.value.length > 0) {
+      const crtElItem = document.createElement('li')
+      const crtElItemValues = document.createElement('li')
 
-        crtElItem.textContent = expenseItem.value
-        crtElItemValues.textContent = amount.value
+      crtElItem.textContent = expenseItem.value
+      crtElItemValues.textContent = amount.value
 
-        fragmentItems.appendChild(crtElItem)
-        fragmentItemValues.appendChild(crtElItemValues)
+      fragmentItems.appendChild(crtElItem)
+      fragmentItemValues.appendChild(crtElItemValues)
 
-        elItems.appendChild(fragmentItems)
-        elItemValues.appendChild(fragmentItemValues)
+      elItems.appendChild(fragmentItems)
+      elItemValues.appendChild(fragmentItemValues)
 
-        errMessage(`${expenseItem.value} added`, 'alert-success')
+      errMessage(`${expenseItem.value} added`, 'alert-success')
 
-        renderBudget()
-      } else if (expenseItem.value.length === 0 && amount.value.length === 0) {
-        errMessage('Please provide item name and an amount', 'alert-danger')
-      } else if (expenseItem.value.length === 0) {
-        errMessage('Please provide item name', 'alert-danger')
-      } else if (amount.value.length === 0) {
-        errMessage('Please provide item amount', 'alert-danger')
-      } else if (isNaN(amount.value)) {
-        errMessage('Please provide a valid item amount', 'alert-danger')
-      }
+      renderBudget()
+    } else if (expenseItem.value.length === 0 && amount.value.length === 0) {
+      errMessage('Please provide item name and an amount', 'alert-danger')
+    } else if (expenseItem.value.length === 0) {
+      errMessage('Please provide item name', 'alert-danger')
+    } else if (amount.value.length === 0) {
+      errMessage('Please provide item amount', 'alert-danger')
+    } else if (isNaN(amount.value)) {
+      errMessage('Please provide a valid item amount', 'alert-danger')
     }
   }
 
